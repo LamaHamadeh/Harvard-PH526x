@@ -79,5 +79,28 @@ print(in_circle((1,1),(0,0))) #This results False as the point resides outside t
 #Print the proportion of points within the circle. 
 #This proportion is an estimate of the ratio of the two areas!
     
+R = 10000
+x = [ (rand(), rand()) for i in range(R) ]
+inside = [ in_circle(p) for p in x ]
+print(sum(inside) / R)
+
+#------
+'''
+R = 10000
+x = []
+inside = []
+for i in range(R):
+    point = [rand(), rand()]
+    x.append(point)
+ '''   
+#-------------------------------------------------
+
+#2f
+#Note: inside and R are defined as in Exercise 2e. Recall the true ratio of the area of of the unit circle 
+#to the area to the inscribing square is pi / 4.
+#Find and print the difference between this value and your estimate from part 2e.
 
 
+print( (math.pi / 4) - (sum(inside) / R) )
+    
+#-------------------------------------------------
