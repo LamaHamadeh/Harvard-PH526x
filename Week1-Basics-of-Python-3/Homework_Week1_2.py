@@ -63,15 +63,21 @@ print(distance((0,0),(1,1)))
 #That is, find if a two-dimensional point has distance <1 from the origin (0,0).
 #Use your function to print whether the point (1,1) lies within the unit circle centered at (0,0).
 
-def in_circle(x, origin = [0]*2):
+def in_circle(x, origin = (0,0)):
    return distance(x, origin) < 1
-   
-print(in_circle( (1,1) ))
 
+print(in_circle((1,1),(0,0))) #This results False as the point resides outside the unit circle. 
+#if we choose another point, let say (0.5, 0.5), the resut would be tru as the point sets inside the unit cirlce.
 #-------------------------------------------------
 
 #2e
-
+#The functions rand and in_circle are defined from previous exercises. 
+#Using these functions, code is pre-entered that creates a list x of R=10000 
+#two-dimensional points. Create a list of 10000 booleans called inside that are 
+#True if and only if the point in x with that index falls within the unit circle. 
+#Make sure to use in_circle!
+#Print the proportion of points within the circle. 
+#This proportion is an estimate of the ratio of the two areas!
     
 
 
