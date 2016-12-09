@@ -65,13 +65,13 @@ print(distance((0,0),(1,1)))
 
 def in_circle(x, origin = (0,0)): #Python, like other languages, provides support for default argument values, 
   #that is function arguments that can either be specified by the caller or left blank to automatically receive a predefined value.
-  #In our cse here we pre-defined the origin of the unit circle to be (0,0)
+  #In our case here we pre-defined the origin of the unit circle to be (0,0)
    return distance(x, origin) < 1
 
 print(in_circle((1,1),(0,0))) #This results False as the point resides outside the unit circle. 
-#if we choose another point, let say (0.5, 0.5), the resut would be tru as the point sets inside the unit cirlce.
+#if we choose another point, let say (0.5, 0.5), the resut would be true as the point sets inside the unit cirlce.
 
-#As the origin is a pre-defined argument, we can exclude it from the function-calling syntaxand write
+#As the origin is a pre-defined argument, we can exclude it from the function-calling syntax and write
 #print(in_circle((1,1))) instead
 #-------------------------------------------------
 
