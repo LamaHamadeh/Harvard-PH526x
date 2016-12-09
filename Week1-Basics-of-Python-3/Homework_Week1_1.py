@@ -24,7 +24,7 @@ alphabet = string.ascii_letters
 #Consider the sentence 'Jim quickly realized that the beautiful gowns are expensive'. 
 #Create a dictionary count_letters with keys consisting of each unique letter in the sentence
 #and values consisting of the number of times each letter is used in this sentence.
-'''
+
 count_letters = {}
           
 for letter in sentence:
@@ -33,7 +33,7 @@ for letter in sentence:
             count_letters[letter] += 1
         else:
             count_letters[letter] = 1
-'''
+
 #print(count_letters.keys())
 #print(count_letters.values())
 #-------------------------------------------------
