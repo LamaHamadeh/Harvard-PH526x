@@ -48,9 +48,9 @@ rand()
 #Print your answer.
 
 def distance(x, y): #x,y are points 
-    dist = math.sqrt((x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2 )#the first point x=(x0,y0)
-    #and the second point y=(x1,y1). The distance between two points is given by:
-        #distance = sqrt((x0-x1)^2+(y0-y1)^2)
+    dist = math.sqrt((x[0] - y[0]) ** 2 + (x[1] - y[1]) ** 2 )#the first point x=(x[0],x[1])
+    #and the second point y=(y[0],y[1]). The distance between two points is given by:
+        #distance = sqrt((x[0]-y[0])^2+(x[1]-y[1])^2)
     return dist
     
 print(distance((0,0),(1,1)))
