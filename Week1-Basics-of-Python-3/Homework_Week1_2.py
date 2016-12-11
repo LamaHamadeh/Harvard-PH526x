@@ -94,9 +94,18 @@ print(sum(inside) / R)
 R = 10000
 x = []
 inside = []
+
 for i in range(R):
     point = [rand(), rand()]
     x.append(point)
+    
+for j in x:
+   inside = [in_circle(j)]
+   
+   
+    
+print(sum(inside)/R)
+   
  '''   
 #-------------------------------------------------
 
