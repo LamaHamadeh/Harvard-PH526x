@@ -92,8 +92,6 @@ print(sum(inside) / R)
 #------
 
 #another way to do it
-
-
 R = 10000
 x = []
 inside = []
