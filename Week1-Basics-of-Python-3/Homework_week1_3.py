@@ -51,22 +51,11 @@ random.seed(1) # This line fixes the value called by your function,
                # and is used for answer-checking.
     
 # write your code here!
-
-R =1000
-
-for i in range(R):
-    x = [random.uniform(0,1)] #Return a random floating point number N such that 
-   #a <= N <= b for a <= b 
-   #and b <= N <= a for b < a.
-for n_neighbors in range(1, 10):
-    moving_window_average(x, n_neighbors)
-    Y = [x] + moving_window_average(x, n_neighbors)
-print(len(Y))
-    
-    
     
 R = 1000
-x = [random.uniform(0, 1) for i in range(0, 1000)]
+x = [random.uniform(0, 1) for i in range(0, 1000)] #Return a random floating point number N such that
+   #a <= N <= b for a <= b 
+   #and b <= N <= a for b < a.
 Y = [x] + [moving_window_average(x, n_neighbors) for n_neighbors in range(1, 10)]
 print(len(Y))
 #-------------------------------------------------
