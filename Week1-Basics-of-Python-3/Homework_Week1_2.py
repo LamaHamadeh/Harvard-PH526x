@@ -90,7 +90,10 @@ inside = [ in_circle(p) for p in x ]
 print(sum(inside) / R)
 
 #------
-'''
+
+#another way to do it
+
+
 R = 10000
 x = []
 inside = []
@@ -100,13 +103,10 @@ for i in range(R):
     x.append(point)
     
 for j in x:
-   inside = [in_circle(j)]
-   
-   
+    inside = [in_circle(j)] 
     
 print(sum(inside)/R)
-   
- '''   
+ 
 #-------------------------------------------------
 
 #2f
