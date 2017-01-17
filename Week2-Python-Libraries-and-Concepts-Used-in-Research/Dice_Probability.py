@@ -52,9 +52,7 @@ for rep in range(100):#By increasing the number of dice rolls for each dice the 
     ys.append(y)
     
 print(len(ys)) #100
-
 print(min(ys)) 
-
 print(max(ys)) 
 
 plt.figure()
