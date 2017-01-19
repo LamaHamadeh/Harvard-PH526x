@@ -74,6 +74,7 @@ Harvard
 online course provided by edx.org
 url: https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016/courseware/317ce880d7644d35840b1f734be76b06/391063d8f58242e892efafc9903b36e8/
 '''
+# We will repeate the previous example, but this time we will use Numpy
 import numpy as np
 
 
