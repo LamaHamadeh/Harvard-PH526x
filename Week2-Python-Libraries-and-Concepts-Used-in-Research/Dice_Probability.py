@@ -4,7 +4,11 @@
 Created on Tue Jan 17 16:26:48 2017
 
 @author: lamahamadeh
+"""
 
+#First: Python-based implementation 
+#------------------------------------
+'''
 source:
 -------
 Video 2.4.2: Examples Involving Randomness
@@ -13,13 +17,10 @@ Using python for research
 Harvard
 online course provided by edx.org
 url: https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016/courseware/317ce880d7644d35840b1f734be76b06/391063d8f58242e892efafc9903b36e8/
-"""
-
-
+'''
 #roll a dice 100 times and plot a histogram of the outcomes
 #meaning: a histogram that shows how frequent the numbers from 1 to 6 appeared in the 100 samples
 
-import numpy as np
 import random 
 import matplotlib.pyplot as plt
 
@@ -58,6 +59,23 @@ print(max(ys))
 plt.figure()
 plt.hist(ys); #the semicolon suppresses the output 
 plt.show()
+
+#------------------------------------------------------------------
+
+#Second: NumPy implementation
+#---------------------------
+'''
+source:
+-------
+Video 2.4.3: using the NumPy Random Module
+Week 2 Overview/Python Libraries and Concepts Used in Research
+Using python for research
+Harvard
+online course provided by edx.org
+url: https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016/courseware/317ce880d7644d35840b1f734be76b06/391063d8f58242e892efafc9903b36e8/
+'''
+import numpy as np
+
 
 
 
