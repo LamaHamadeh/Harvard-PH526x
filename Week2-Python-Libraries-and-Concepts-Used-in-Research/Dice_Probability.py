@@ -103,6 +103,8 @@ plt.hist(Y)
 #speed1/speed2=1.19823723963/0.0248949445651=49.9
 #and it is obviously can be seen taht using numpy is not only uses a less code but also much faster than the python-based
 #implementation (with approximately 50 times faster in our case).
+#ususally the coding speed value depends on your computer speed, so it doesn't have to hold the same value for everyone.
+#You might get a different value
 #------------------------------------------------------------------
 
 
