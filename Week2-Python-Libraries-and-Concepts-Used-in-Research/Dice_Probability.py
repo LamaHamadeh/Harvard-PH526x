@@ -96,7 +96,8 @@ speed2 = end_time - start_time
 print(speed2)#0.0248949445651
 
 
-plt.hist(Y)
+plt.hist(Y) #It can be seen from the histogram that its shape tends to have a normal distribution shape as we go higher in the 
+#number of rows.
 
 #Generally using numpy is much faster than using standard python implementation. This is very important in scientific research.
 #we can prove that by calculating the value of:
