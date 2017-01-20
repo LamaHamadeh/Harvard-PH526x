@@ -21,8 +21,10 @@ url: https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016/courseware
 #roll a dice 100 times and plot a histogram of the outcomes
 #meaning: a histogram that shows how frequent the numbers from 1 to 6 appeared in the 100 samples
 
+import numpy as np
 import random 
 import matplotlib.pyplot as plt
+import time
 
 random.choice([1,2,3,4,5,6]) #this line throws the dice one time 
 
@@ -40,10 +42,10 @@ plt.figure()
 plt.hist(rolls, bins = np.linspace(0.5,6.5,7));
 plt.show()
 
-
+start_time = time.clock()
 #This time we will roll 10 dice not jsut one
 ys = []
-for rep in range(100):#By increasing the number of dice rolls for each dice the distrbution follows the central limit theorem
+for rep in range(100000):#By increasing the number of dice rolls for each dice the distrbution follows the central limit theorem
 #The central limit theorem (CLT) states that the sum of a large number of random variables regardless of their distribution will
 #approximately follow a normal distribution (or Gaussian distribution).
     y = 0
@@ -51,7 +53,12 @@ for rep in range(100):#By increasing the number of dice rolls for each dice the 
         x = random.choice([1,2,3,4,5,6])
         y = y + x
     ys.append(y)
-    
+
+end_time = time.clock()
+
+speed1 = end_time - start_time
+print(speed1)#1.19823723963
+   
 print(len(ys)) #100
 print(min(ys)) 
 print(max(ys)) 
@@ -62,8 +69,8 @@ plt.show()
 
 #------------------------------------------------------------------
 
-#Second: NumPy implementation
-#---------------------------
+#Second: NumPy random module implementation
+#------------------------------------------
 '''
 source:
 -------
@@ -75,10 +82,27 @@ online course provided by edx.org
 url: https://courses.edx.org/courses/course-v1:HarvardX+PH526x+3T2016/courseware/317ce880d7644d35840b1f734be76b06/391063d8f58242e892efafc9903b36e8/
 '''
 # We will repeate the previous example, but this time we will use Numpy
-import numpy as np
 
 
+start_time = time.clock()
+
+X= np.random.randint(1,7,(100000,10)) #generate random numbers between 1 and 6 in a 2D matrix where we have 100 rows and 10 columns
+Y = np.sum(X, axis=1) #sum over all the columns (the length of Y =100)
+#if you sum over all the columns, the length of the resulting list = the length of your rows
+#if you sum over all the rows, the length of the resulting list = the length of your columns
+
+end_time = time.clock()
+speed2 = end_time - start_time
+print(speed2)#0.0248949445651
 
 
+plt.hist(Y)
+
+#Generally using numpy is much faster than using standard python implementation. This is very important in scientific research.
+#we can prove that by calculating the value of:
+#speed1/speed2=1.19823723963/0.0248949445651=49.9
+#and it is obviously can be seen taht using numpy is not only uses a less code but also much faster than the python-based
+#implementation (with approximately 50 times faster in our case).
+#------------------------------------------------------------------
 
 
