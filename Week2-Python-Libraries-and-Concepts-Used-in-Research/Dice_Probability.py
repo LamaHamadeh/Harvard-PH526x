@@ -101,7 +101,7 @@ plt.hist(Y) #It can be seen from the histogram that its shape tends to have a no
 
 #Generally using numpy is much faster than using standard python implementation. This is very important in scientific research.
 #we can prove that by calculating the value of:
-#speed1/speed2=1.19823723963/0.0248949445651=49.9
+#speed1/speed2=1.19823723963/0.0248949445651=49.9(approximately 50 times faster)
 #and it is obviously can be seen taht using numpy is not only uses a less code but also much faster than the python-based
 #implementation (with approximately 50 times faster in our case).
 #ususally the coding speed value depends on your computer speed, so it doesn't have to hold the same value for everyone.
