@@ -178,7 +178,84 @@ diag_win(board, 1)
 #Exercise 9
 #-----------
 
+#Create a function evaluate(board) that uses row_win, col_win, and diag_win functions for both players. 
+#If one of them has won, return that player's number. If the board is full but no one has won, return -1.
+#Otherwise, return 0.
+
+def evaluate(board):
+    winner = 0
+    for player in [1, 2]:
+        # Check if `row_win`, `col_win`, or `diag_win` apply.  if so, store `player` as `winner`.
+        if row_win(board, player) or diag_win(board, player) or col_win(board, player):
+            return player
+    if np.all(board != 0):
+        winner = -1
+    return winner
+    
+                           
+#board is already defined from previous exercises. Call evaluate to see if either player has won the game yet.
+
+evaluate(board)
+#------------------------------------------------------------------------------
+
+#Exercise 10
+#-----------
+
+#create_board(), random_place(board, player), and evaluate(board) have been created from previous exercises. 
+#Create a function play_game() that creates a board, calls alternates between two players 
+#(beginning with Player 1), and evaluates the board for a winner after every placement. 
+#Play the game until one player wins (returning 1 or 2 to reflect the winning player), 
+#or the game is a draw (returning -1).
+
+def play_game():
+    board = create_board()
+    while True:
+        for player in [1, 2]:
+            random_place(board, player)
+            result = evaluate(board)
+            if result != 0:
+                return result             
+             
+#Call play_game once.
+
+play_game()
+
+#------------------------------------------------------------------------------
+
+#Exercise 10
+#-----------
+
+#Use the play_game() function to play 1,000 random games, where Player 1 always goes first.
+#When doing this, import and use the time library to call the time function both before and after 
+#playing all 1,000 games in order to evaluate how long this takes per game. Print your answer.
+
+import time 
+
+start_time = time.time()
+ 
+ITERATIONS = 1000
+result = []
+for i in range(ITERATIONS):
+    result.append(play_game())                
+
+end_time = time.time()
+
+print(end_time - start_time)
+
+#The library matplotlib.pyplot has already been stored as plt. Use plt.hist and plt.show to plot a 
+#histogram of the results. Does Player 1 win more than Player 2? 
+#Does either player win more than each player draws?
+
+import matplotlib.pyplot as plt
+
+plt.hist(result) 
+plt.show()
 
 
-
+#Result:
+#------
+'''
+We see that Player 1 wins more than Player 2, and the game sometimes ends in draws. 
+The total amount of time taken is about a few seconds, but will vary from machine to machine.
+'''
 #------------------------------------------------------------------------------
