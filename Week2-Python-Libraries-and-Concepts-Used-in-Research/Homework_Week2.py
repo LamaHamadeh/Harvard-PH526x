@@ -255,7 +255,21 @@ plt.show()
 #Result:
 #------
 '''
-We see that Player 1 wins more than Player 2, and the game sometimes ends in draws. 
+We see (from the histogram plot) that Player 1 wins more than Player 2, and the game sometimes ends in draws. 
 The total amount of time taken is about a few seconds, but will vary from machine to machine.
 '''
+#------------------------------------------------------------------------------
+
+#Exercise 12
+#-----------
+
+#This result is expected --- when guessing at random, it's better to go first. 
+#Let's see if Player 1 can improve their strategy. create_board(), random_place(board, player), 
+#and evaluate(board) have been created from previous exercises. Create a function play_strategic_game(), 
+#where Player 1 always starts with the middle square, and otherwise both players place their markers randomly.
+
+
+
+#Call play_strategic_game once.
+
 #------------------------------------------------------------------------------
