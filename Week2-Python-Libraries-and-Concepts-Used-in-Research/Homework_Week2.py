@@ -222,7 +222,7 @@ play_game()
 
 #------------------------------------------------------------------------------
 
-#Exercise 10
+#Exercise 11
 #-----------
 
 #Use the play_game() function to play 1,000 random games, where Player 1 always goes first.
