@@ -121,10 +121,64 @@ print(board)
 #that takes the player (integer), and determines if any row consists of only their marker. 
 #Have it return True of this condition is met, and False otherwise.
 
+def check_row(row, player):
+    for marker in row:
+        if marker != player:
+            return False
+    return True
 
-                                                                                                  
+def row_win(board, player):
+    for row in board:
+        if check_row(row, player):
+            return True
+    return False                                                                                        
                                                                                                  
 #board is already defined from previous exercises. Call row_win to check if Player 1 has a complete row.
 
+row_win(board, 1)
 #------------------------------------------------------------------------------
 
+#Exercise 7
+#-----------
+
+#Create a similar function col_win(board, player) that takes the player (integer), 
+#and determines if any column consists of only their marker. Have it return True if this condition is met, 
+#and False otherwise.
+        
+def col_win(board, player):
+    for row in board.T:
+        if check_row(row, player):
+            return True
+    return False
+                                  
+                                  
+#board is already defined from previous exercises. Call col_win to check if Player 1 has a complete column.
+
+col_win(board, 1)
+#------------------------------------------------------------------------------
+
+#Exercise 8
+#-----------
+
+#Finally, create a function diag_win(board, player) that tests if either diagonal of the board 
+#consists of only their marker. Have it return True if this condition is met, and False otherwise.
+
+def diag_win(board, player):
+    main_diag = board.diagonal()
+    anti_diag = np.flipud(board).diagonal()[::-1]
+    return check_row(main_diag, player) or check_row(anti_diag, player)                                    
+
+
+#board is already defined from previous exercises. Call diag_win to check if Player 1 has a complete diagonal.
+
+diag_win(board, 1)
+
+#------------------------------------------------------------------------------
+
+#Exercise 9
+#-----------
+
+
+
+
+#------------------------------------------------------------------------------
