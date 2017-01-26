@@ -7,6 +7,8 @@ Created on Wed Jan 25 22:06:22 2017
 """
 
 # ***This code works for Python 2.7, but not for Python 3.5!***
+#*still need to see the situation where no one wins!*
+#in this case, SPYDER halt and stops running!
 
 #import random module for generating random posiitons for the other player
 #-------------------------------------------------------------------------
