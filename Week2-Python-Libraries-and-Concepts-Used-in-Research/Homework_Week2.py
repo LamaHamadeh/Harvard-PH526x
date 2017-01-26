@@ -249,12 +249,13 @@ print(end_time - start_time)
 import matplotlib.pyplot as plt
 
 plt.hist(result) 
+plt.savefig('tic_tac_toe_Hist.pdf')
 plt.show()
 
 
+'''
 #Result:
 #------
-'''
 We see (from the histogram plot) that Player 1 wins more than Player 2, and the game sometimes ends in draws. 
 The total amount of time taken is about a few seconds, but will vary from machine to machine.
 '''
@@ -268,8 +269,54 @@ The total amount of time taken is about a few seconds, but will vary from machin
 #and evaluate(board) have been created from previous exercises. Create a function play_strategic_game(), 
 #where Player 1 always starts with the middle square, and otherwise both players place their markers randomly.
 
-
+def play_strategic_game():
+    board, winner = create_board(), 0
+    board[1,1] = 1
+    while winner == 0:
+        for player in [2,1]:
+            board = random_place(board, player)
+            winner = evaluate(board)
+            if winner != 0:
+                break
+    return winner    
 
 #Call play_strategic_game once.
 
+play_strategic_game() 
+#------------------------------------------------------------------------------
+
+#Exercise 13
+#-----------
+
+#The results from Exercise 12 have been stored. Use the play_strategic_game() function to play 1,000 random games.
+#Use the time libary to evaluate how long all these games takes.
+
+start_time = time.time()
+
+ITERATIONS = 1000
+result2 = []
+for i in range(ITERATIONS):
+    result2.append(play_strategic_game()) 
+                                                                           
+end_time = time.time()
+
+print(end_time - start_time)
+
+
+
+#The library matplotlib.pyplot has already been stored as plt. Use plt.hist and plt.show to plot your results. 
+#Did Player 1's performance improve? Does either player win more than each player draws?
+
+plt.hist(result2)
+plt.savefig('tic_tac_toe_Hist_2.pdf')
+plt.show()
+
+
+'''
+#Result:
+#------
+Yes, starting in the middle square is a large advantage when play is otherwise random. 
+Also, each game takes less time to play, because each victory is decided earlier. 
+Player 1 wins much more than Player 2, and draws are less common.
+'''
 #------------------------------------------------------------------------------
