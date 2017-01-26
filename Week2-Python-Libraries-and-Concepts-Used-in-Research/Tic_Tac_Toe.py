@@ -100,7 +100,8 @@ while True: # Having True as a condition ensures that the following code runs
 #-----------------------------------------------------        
         if CheckAll('x') == True:
             print ("X Wins!")
-            break; #break the main while loop if this condition is met!
+            break;#This break belongs to having the first player 
+                    #is the winner
        
         #we need another while loop to generate random input for the second
         #player. This loop is broken when 'if CheckAll('o') == True' is met.
@@ -120,15 +121,14 @@ while True: # Having True as a condition ensures that the following code runs
                 #-----------------------------------
                 if CheckAll('o') == True:
                     print ("O Wins!")
-                    break; #This break belongs to haveing the second player 
+                    break; #This break belongs to having the second player 
                     #is the winner
                     
-                break; #This break belongs to the second while loop
+                break; #belongs to checking the availibility for the second player
+                #' if board[number2] != 'x' and board[number2] != 'o':'
                     
     else: #if the input is taken by another player (this can be checked by
     #board[number]!='x' and board[number]!='o'), then do the following line
         print ("Spot Taken... Try again.")
-    break;#this break belongs to the main while loop. End the game when one
-    #of the game conditions is satisfied. If this is not written, then the 
-    #code keeps runnign without stopping.
+        break; #belongs to the first 'if'
 #------------------------------------------------------------------------------
