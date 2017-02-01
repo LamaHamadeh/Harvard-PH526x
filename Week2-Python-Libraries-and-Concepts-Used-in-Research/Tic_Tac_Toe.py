@@ -134,16 +134,3 @@ while True: # Having True as a condition ensures that the following code runs
         print ("Spot Taken... Try again.")
         break; #belongs to the first 'if'
 #------------------------------------------------------------------------------
-
-'''
-for draw situations, i.e., no one has won, we can use the fucntion:
-def evaluate(board):
-    winner = 0
-    for player in [1, 2]:
-        # Check if `row_win`, `col_win`, or `diag_win` apply.  if so, store `player` as `winner`.
-        if row_win(board, player) or diag_win(board, player) or col_win(board, player):
-            return player
-    if np.all(board != 0):
-        winner = -1
-    return winner
- '''
