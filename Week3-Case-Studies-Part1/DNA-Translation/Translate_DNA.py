@@ -3,7 +3,7 @@
 """
 Created on Tue Feb 21 20:55:21 2017
 
-@author: lamahamadeh
+@author: Lama Hamadeh
 """
 '''
 Case Study about DNA translation
