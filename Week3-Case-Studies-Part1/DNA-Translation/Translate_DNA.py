@@ -33,7 +33,8 @@ seq = seq.replace("\n", "")
 seq = seq.replace("\n", "")#As strings are immutable, this method return a new string 
 #so in order for us to use a new string, we have to assign it to a variable
 #in this case, we will reassign it to the same variable as before.
-print(seq)
+print(seq) #we can even slice up the sequence to see specific part of the DNA file
+#for example: print(seq[40:50]). In this case the output would be: CCTGAAAACC.
 
 #Translating the DNA Sequence
 #-----------------------------
