@@ -31,11 +31,31 @@ inputfile = "DNA.txt"
 f = open (inputfile, "r") #"r" here refers to reading command
 seq = f.read()
 seq = seq.replace("\n", "") 
-seq = seq.replace("\n", "")#As strings are immutable, this method return a new string 
+seq = seq.replace("\r", "")#As strings are immutable, this method return a new string 
 #so in order for us to use a new string, we have to assign it to a variable
 #in this case, we will reassign it to the same variable as before.
 print(seq) #we can even slice up the sequence to see specific part of the DNA file
 #for example: print(seq[40:50]). In this case the output would be: CCTGAAAACC.
+
+#Another way of opening the DNA.txt file:
+    
+#inputfile = "DNA.txt"
+#with open(inutfile, "r") as f: #we need to put the colon at the end since with 
+         #is a compound statement
+    #seq = f.read()
+    
+# We also can create a function that reads the file:
+
+'''
+def read_seq(inputfile):
+    """This function reads and returns the input sequence with special characters removed"""
+    with open(inputfile, "r") as f:
+        seq = f.read()
+    seq = seq.replace("\n", "") 
+    seq = seq.replace("\r", "")
+    return seq
+'''
+
 
 #Translating the DNA Sequence
 #-----------------------------
@@ -112,6 +132,3 @@ def translate(seq):
 print(translate("ATG"))
 
 print(help (translate))#This print the docstring that is included inside the function
-
-
-
