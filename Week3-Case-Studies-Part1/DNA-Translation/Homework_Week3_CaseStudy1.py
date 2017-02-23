@@ -59,7 +59,17 @@ print(letters)
 #ensure the result remains within 0-26 using result % 27.
 
 
+encryption_key = 3
 
+# define `encoding` here!
+encoding = {alphabet[i]:((i + encryption_key) % 27) for i in range(27)}
+
+#OR
+
+#alphabet_len = len(alphabet)
+#encoding = {alphabet[i]:((i + encryption_key) % alphabet_len) for i in range(alphabet_len)}
+
+print(encoding)
 
 
 #------------------------------------------------------------------------------
