@@ -77,6 +77,32 @@ print(encoding)
 # Exercise 3
 #-----------
 
+#alphabet and letters are preloaded from the previous exercise. Write a function 
+#caesar(message, encryption_key) to encode a message with the Caesar cipher.
+
+       
+#Use your code from Exercise 2 to find the value of encoding for each letter in message.
+
+
+#Use these values as keys in the dictionary letters to determine the encoded 
+#letter for each letter in message.
+#Your function should return a string consisting of these encoded letters.
+
+
+#Use caesar to encode message using encryption_key = 3, and save the result as encoded_message.
+
+
+
+#Print encoded_message.
+
+
+
+#------------------------------------------------------------------------------
+
+# Exercise 4
+#-----------
+
+
 
 
 
