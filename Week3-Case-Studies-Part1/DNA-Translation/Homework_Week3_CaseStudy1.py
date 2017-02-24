@@ -80,33 +80,41 @@ print(encoding)
 #alphabet and letters are preloaded from the previous exercise. Write a function 
 #caesar(message, encryption_key) to encode a message with the Caesar cipher.
 
-       
 #Use your code from Exercise 2 to find the value of encoding for each letter in message.
-
 
 #Use these values as keys in the dictionary letters to determine the encoded 
 #letter for each letter in message.
 #Your function should return a string consisting of these encoded letters.
 
-
 #Use caesar to encode message using encryption_key = 3, and save the result as encoded_message.
-
-
 
 #Print encoded_message.
 
+message = "hi my name is caesar"
 
+def caesar(message, key):
+    # return the encoded message as a single string!
+    alphabet_len = len(alphabet)
+    encoded_message = {alphabet[i]:((i + key) % alphabet_len) for i in range(alphabet_len)}
+    return ''.join([alphabet[encoded_message[letter]] for letter in message])
+    
+encoded_message = caesar(message, 3)
+
+print(encoded_message)
 
 #------------------------------------------------------------------------------
 
 # Exercise 4
 #-----------
 
+#Decode and save coded_message using caesar and encryption_key = -3. 
+#coded_message is already loaded from the previous problem.
+#Store your decoded message as decoded_message.
+#Print decoded_message. Does this recover your original message?
 
 
 
 
-
-
+#------------------------------------------------------------------------------
 
 
