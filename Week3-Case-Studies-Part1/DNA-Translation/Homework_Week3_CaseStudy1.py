@@ -112,9 +112,10 @@ print(encoded_message)
 #Store your decoded message as decoded_message.
 #Print decoded_message. Does this recover your original message?
 
+decoded_message = caesar(encoded_message, -3)
+print(decoded_message)
 
-
-
+#It can be seen that it is the same original message!
 #------------------------------------------------------------------------------
 
 
