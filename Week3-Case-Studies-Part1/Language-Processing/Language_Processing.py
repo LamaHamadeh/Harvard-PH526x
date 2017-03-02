@@ -56,7 +56,32 @@ def count_words_fast(text):
 
 print(count_words_fast)
 
-print(count_words(text)==count_words_fast(text)) #True
-print(count_words(text) is count_words_fast(text))#False #second quiz question
+print(count_words(text)==count_words_fast(text))
+print(count_words(text) is count_words_fast(text))#second quiz question
 
+#------------------------------------------------------------------------------
+
+#read a book
+#-------------
+
+def read_book(title_path):
+    '''
+    Read a book and return it as a string
+    '''
+    with open(title_path, "r", encoding= "utf8") as current_file:#utf8 is a character encoder 
+        text = current_file.read()
+        text = text.replace("\n","").replace("\r","")
+    return text
+        
+
+text = read_book(' ')#read a book from its path
+
+print(len(text))#number of charatcers in the book
+
+#if there is a famous/wanted line in the book we can use the find method to find it
+ind = text.find(" write the famous line")
+print(ind)#print the index number of the famous/wanted sentence
+sample_text = text[ind : ind + 1000]#slice the paragraph that contains the famous line
+print(sample_text)#print the whole paragraph
+    
 #------------------------------------------------------------------------------
