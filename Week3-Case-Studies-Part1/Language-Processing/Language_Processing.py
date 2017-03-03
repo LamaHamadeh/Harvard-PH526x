@@ -78,7 +78,7 @@ text = read_book(' ')#read a book from its path
 
 print(len(text))#number of charatcers in the book
 
-#if there is a famous/wanted line in the book we can use the find method to find it
+#if there is a famous/wanted line in the book we can use the 'find' method to find it
 ind = text.find(" write the famous line")
 print(ind)#print the index number of the famous/wanted sentence
 sample_text = text[ind : ind + 1000]#slice the paragraph that contains the famous line
