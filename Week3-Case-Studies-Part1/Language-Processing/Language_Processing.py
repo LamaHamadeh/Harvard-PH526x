@@ -63,7 +63,7 @@ print(count_words(text) is count_words_fast(text))#second quiz question
 
 #read a book
 #-------------
-
+'''
 def read_book(title_path):
     '''
     Read a book and return it as a string
@@ -83,5 +83,5 @@ ind = text.find(" write the famous line")
 print(ind)#print the index number of the famous/wanted sentence
 sample_text = text[ind : ind + 1000]#slice the paragraph that contains the famous line
 print(sample_text)#print the whole paragraph
-    
+'''  
 #------------------------------------------------------------------------------
