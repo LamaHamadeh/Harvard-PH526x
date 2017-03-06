@@ -12,8 +12,10 @@ Case Study 2 -
 ==============================
 '''
 
-#In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet.
+#In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet. 
+#Perhaps the distribution of word frequencies of Hamlet depends on the translation --- let's find out!
 
+#For these exercises, functions count_words_fast, read_book, and word_stats are already defined as in the Case 2 Videos (Videos 3.2.x).
 #----------------------------------------------------------------------------------------------------------------
 
 
