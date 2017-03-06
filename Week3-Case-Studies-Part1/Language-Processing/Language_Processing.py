@@ -164,13 +164,13 @@ plt.loglog(stats.length, stats.unique, "bo") #it is a straight line which sugges
 
 plt.figure(figsize = (10,10))
 
-subset = stats[stats.language == "English"]
+subset = stats[stats.language == "English"] #extract a subset that has only the rows with English Language
 plt.loglog(subset.length, subset.unique, "o", label = "English", color = "crimson")
 
-subset = stats[stats.language == "French"]
+subset = stats[stats.language == "French"] #extract a subset that has only the rows with French Language
 plt.loglog(subset.length, subset.unique, "o", label = "English", color = "orange")
 
-subset = stats[stats.language == "German"]
+subset = stats[stats.language == "German"] #extract a subset that has only the rows with German Language
 plt.loglog(subset.length, subset.unique, "o", label = "English", color = "forestgreen")
 
 plt.legend()
