@@ -130,26 +130,26 @@ table.loc[2] = "Jess", 32
 print(table)
 '''
 
-stats = pd.DataFrame(columns = ("language" , "director" , "title" , "length" , "unique")) #this creates an empty dataframe 
+stats = pd.DataFrame(columns = ("Language" , "Director" , "Title" , "Length" , "Unique")) #this creates an empty dataframe 
 #with empty table elements with 5 columns
 
 #To put data in the table
 title_num =1
-for language in os.listdir(movie_dir):
-    for director in os.listdir(movie_dir + "/" + language):
-        for title in os.listdir(movie_dir + "/" + language + "/" + director):
-            inputfile = movie_dir + "/" + language + "/" + director + "/" + title
+for Language in os.listdir(movie_dir):
+    for Director in os.listdir(movie_dir + "/" + Language):
+        for Title in os.listdir(movie_dir + "/" + Language + "/" + Director):
+            inputfile = movie_dir + "/" + Language + "/" + Director + "/" + Title
             print(inputfile)
             text = read_book(inputfile)
             (num_unique, counts) = word_stats(count_words(text))
-            stats.loc[title_num ] = language , director.title(), title.replace(".txt", " ") , sum(counts) , num_unique #.title() here capitalises the first letter from the first and last name of the director. If we want to capitalise only the first letter, we can use .capitalize().
+            stats.loc[title_num ] = Language , Director.title(), Title.replace(".txt", " ") , sum(counts) , num_unique #.title() here capitalises the first letter from the first and last name of the director. If we want to capitalise only the first letter, we can use .capitalize().
             title_num += 1
             
 print(stats) #print the created dataframe
 print(stats.head()) #print the top 5 lines
 print(stats.tail()) #print the last 5 lines
 
-print(stats[stats.language == "English"]) #print the number of entries for language English (a subset from the whole dataframe)
+print(stats[stats.Language == "English"]) #print the number of entries for language English (a subset from the whole dataframe)
 
 #------------------------------------------------------------------------------
 
@@ -158,17 +158,17 @@ print(stats[stats.language == "English"]) #print the number of entries for langu
 
 import matplotlib.pyplot as plt
 
-plt.plot(stats.length, stats.unique, "bo")
+plt.plot(stats.Length, stats.Unique, "bo")
 #OR we can write plt.plot(stats['length'], stats['unique'])
-plt.loglog(stats.length, stats.unique, "bo") #it is a straight line which suggest data modelling strategies that we might use
+plt.loglog(stats.Length, stats.Unique, "bo") #it is a straight line which suggest data modelling strategies that we might use
 
 plt.figure(figsize = (10,10))
 
-subset = stats[stats.language == "English"] #extract a subset that has only the rows with English Language
-plt.loglog(subset.length, subset.unique, "o", label = "English", color = "blue")
+subset = stats[stats.Language == "English"] #extract a subset that has only the rows with English Language
+plt.loglog(subset.Length, subset.Unique, "o", label = "English", color = "blue")
 
-subset = stats[stats.language == "French"] #extract a subset that has only the rows with French Language
-plt.loglog(subset.length, subset.unique, "o", label = "English", color = "red")
+subset = stats[stats.Language == "French"] #extract a subset that has only the rows with French Language
+plt.loglog(subset.Length, subset.Unique, "o", label = "English", color = "red")
 
 
 plt.legend()
