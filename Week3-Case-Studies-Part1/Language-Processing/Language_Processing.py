@@ -67,7 +67,7 @@ print(count_words(text) is count_words_fast(text))#second quiz question
 
 def read_book(title_path):
     """Read a book and return it as a string"""
-    with open(title_path, "r", encoding = "utf8") as current_file:
+    with open(title_path, "r", encoding = "utf8") as current_file: #encoding = "utf8" causes a problem when running the code in Python 2.7. However, it runs normally when using Python 3.5.
         text = current_file.read()
         text = text.replace("\n","").replace("\r","")
     return text
