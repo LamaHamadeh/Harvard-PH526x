@@ -118,8 +118,8 @@ book_dir = "./books" #tells us how many directories in the book directory
 import pandas as pd
 
 '''
-Pandas example of how to create a 2x2 dataframe:
--------------------------------------------------
+Pandas example of how to create a dataframe:
+--------------------------------------------
 import pandas as pd
 
 table = pd.DataFrame(coloums = ("name" , "age"))
@@ -129,7 +129,7 @@ table.loc[2] = "Jess", 32
 print(table)
 '''
 
-stats = pd.DataFrame(columns = ("language" , "author" , "tilte" , "lenght" , "unique")) #this (alone) creates an empty dataframe 
+stats = pd.DataFrame(columns = ("language" , "author" , "tilte" , "lenght" , "unique")) #this creates an empty dataframe 
 #with empty table elements with 5 columns
 
 #To put data in the table
@@ -148,10 +148,36 @@ print(stats) #print the created dataframe
 print(stats.head()) #print the top 5 lines
 print(stats.tail()) #print the last 5 lines
 
+print(stats.length) #to extractm a specific column from the dtatframe
+print(stats.unique)
+
+stats[stats.language == "English"] #print the number of entries for language English
 #------------------------------------------------------------------------------
 
+#Plotting Book Statistics
+#-------------------------
 
+import matplotlib.pyplot as plt
 
+plt.plot(stats.length, stats.unique, "bo")
+plt.loglog(stats.length, stats.unique, "bo") #it is a straight line which suggest data modelling strategies that we might use
 
+plt.figure(figsize = (10,10))
+
+subset = stats[stats.language == "English"]
+plt.loglog(subset.length, subset.unique, "o", label = "English", color = "crimson")
+
+subset = stats[stats.language == "French"]
+plt.loglog(subset.length, subset.unique, "o", label = "English", color = "orange")
+
+subset = stats[stats.language == "German"]
+plt.loglog(subset.length, subset.unique, "o", label = "English", color = "forestgreen")
+
+plt.legend()
+plt.xlabel("Book Length")
+plt.ylabel("Number of unique words")
+plt.savefig("lang_plot.pdf")
+
+#------------------------------------------------------------------------------
 
 
