@@ -67,20 +67,20 @@ print(count_words(text) is count_words_fast(text))#second quiz question
 
 def read_book(title_path):
     """Read a book and return it as a string"""
-    with open(title_path, "r", encoding= "utf8") as current_file:
+    with open(title_path, "r", encoding = "utf8") as current_file:
         text = current_file.read()
         text = text.replace("\n","").replace("\r","")
     return text
         
 
-text = read_book('/Users/lamahamadeh/Desktop/Introduction.txt.rtf')#read a book from its path
+text = read_book('/Users/ADB3HAMADL/Desktop/Movies/English/Nora Ephron/You Have Got Mail.txt')#read a book from its path
 
 print(len(text))#number of charatcers in the book
 
 #if there is a famous/wanted line in the book we can use the 'find' method to find it
-ind = text.find("The purpose of this chapter")
+ind = text.find("go to the mattresses")
 print(ind)#print the index number of the famous/wanted sentence
-sample_text = text[ind : ind + 1000]#slice the paragraph that contains the famous line
+sample_text = text[ind : ind + 953]#slice the paragraph that contains the famous line
 print(sample_text)#print the whole chosen paragraph
  
 
@@ -96,7 +96,7 @@ def word_stats(word_counts):
    return(num_unique,counts)
     
     
-text = read_book('/Users/lamahamadeh/Desktop/Introduction.txt.rtf')
+text = read_book('/Users/ADB3HAMADL/Desktop/Movies/English/Nora Ephron/You Have Got Mail.txt')
 
 word_counts = count_words(text)
 
@@ -104,6 +104,7 @@ word_counts = count_words(text)
 
 print(num_unique) #print the number of unique number of words in the text
 print(sum(counts)) #print the total number of words in the text
+
 
 #------------------------------------------------------------------------------
 
@@ -113,7 +114,7 @@ print(sum(counts)) #print the total number of words in the text
     
 import os #to read directories
 
-book_dir = "./books" #tells us how many directories in the book directory
+movie_dir = "/Users/ADB3HAMADL/Desktop/movies" #tells us how many directories in the book directory
 
 import pandas as pd
 
@@ -129,29 +130,27 @@ table.loc[2] = "Jess", 32
 print(table)
 '''
 
-stats = pd.DataFrame(columns = ("language" , "author" , "tilte" , "lenght" , "unique")) #this creates an empty dataframe 
+stats = pd.DataFrame(columns = ("language" , "director" , "title" , "lenght" , "unique")) #this creates an empty dataframe 
 #with empty table elements with 5 columns
 
 #To put data in the table
 title_num =1
-for language in os.listdir(book_dir):
-    for author in os.listdir(book_dir + "/" + language):
-        for title in os.listdir(book_dir + "/" language + "/" + author):
-            inputfile = book_dir + "/" language + "/" + author + "/" title
+for language in os.listdir(movie_dir):
+    for director in os.listdir(movie_dir + "/" + language):
+        for title in os.listdir(movie_dir + "/" + language + "/" + director):
+            inputfile = movie_dir + "/" + language + "/" + director + "/" + title
             print(inputfile)
             text = read_book(inputfile)
             (num_unique, counts) = word_stats(count_words(text))
-            stats.loc[title_num ] = language , author.capilatize(), title.replace(".txt", " ") , sum(counts) , num_unique
+            stats.loc[title_num ] = language , director.capitalize(), title.replace(".txt", " ") , sum(counts) , num_unique
             title_num += 1
             
 print(stats) #print the created dataframe
 print(stats.head()) #print the top 5 lines
 print(stats.tail()) #print the last 5 lines
 
-print(stats.length) #to extractm a specific column from the dtatframe
-print(stats.unique)
+print(stats[stats.language == "English"]) #print the number of entries for language English (a subset from the whole dataframe)
 
-stats[stats.language == "English"] #print the number of entries for language English
 #------------------------------------------------------------------------------
 
 #Plotting Book Statistics
@@ -165,19 +164,17 @@ plt.loglog(stats.length, stats.unique, "bo") #it is a straight line which sugges
 plt.figure(figsize = (10,10))
 
 subset = stats[stats.language == "English"] #extract a subset that has only the rows with English Language
-plt.loglog(subset.length, subset.unique, "o", label = "English", color = "crimson")
+plt.loglog(subset.length, subset.unique, "o", label = "English", color = "blue")
 
 subset = stats[stats.language == "French"] #extract a subset that has only the rows with French Language
-plt.loglog(subset.length, subset.unique, "o", label = "English", color = "orange")
+plt.loglog(subset.length, subset.unique, "o", label = "English", color = "red")
 
-subset = stats[stats.language == "German"] #extract a subset that has only the rows with German Language
-plt.loglog(subset.length, subset.unique, "o", label = "English", color = "forestgreen")
 
 plt.legend()
-plt.xlabel("Book Length")
+plt.xlabel("Movie Length")
 plt.ylabel("Number of unique words")
 plt.savefig("lang_plot.pdf")
 
 #------------------------------------------------------------------------------
 
-
+#
