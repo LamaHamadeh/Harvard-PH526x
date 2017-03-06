@@ -53,7 +53,22 @@ def word_stats(word_counts):
 # Exercise 1
 #-----------
 
-#TODO: 
+#TODO: Write a function word_count_distribution(text) that takes a book string and returns a dictionary with items 
+#corresponding to the count of times a collection of words appears in the translation, and values corresponding to 
+#the number of number of words that appear with that frequency.
+
+
+#TODO: First use count_words_fast(text) to create a dictionary called word_counts with unique words in the dictionary 
+#as keys and their frequency in the book as values.
+
+
+#TODO: Next, create and return a new dictionary count_distribution with unique values from word_counts as keys and their 
+#frequency as values. For example, 'you are what you eat' contains three words that occur once and one word that occurs twice, 
+#so word_count_distribution('you are what you eat') should return a dictionary {1:3, 2:1}.
+
+
+#TODO: 'Romeo and Juliet' is preloaded as text. Call word_count_distribution(text), and save the result as distribution.
+
 
 #------------------------------------------------------------------------------
 
