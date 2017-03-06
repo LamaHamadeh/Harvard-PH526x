@@ -111,9 +111,44 @@ print(sum(counts)) #print the total number of words in the text
 #-----------------------
  
     
+import os #to read directories
 
+book_dir = "./books" #tells us how many directories in the book directory
 
+import pandas as pd
 
+'''
+Pandas example of how to create a 2x2 dataframe:
+-------------------------------------------------
+import pandas as pd
+
+table = pd.DataFrame(coloums = ("name" , "age"))
+table.loc[1] = "James", 22
+table.loc[2] = "Jess", 32
+
+print(table)
+'''
+
+stats = pd.DataFrame(columns = ("language" , "author" , "tilte" , "lenght" , "unique")) #this (alone) creates an empty dataframe 
+#with empty table elements with 5 columns
+
+#To put data in the table
+title_num =1
+for language in os.listdir(book_dir):
+    for author in os.listdir(book_dir + "/" + language):
+        for title in os.listdir(book_dir + "/" language + "/" + author):
+            inputfile = book_dir + "/" language + "/" + author + "/" title
+            print(inputfile)
+            text = read_book(inputfile)
+            (num_unique, counts) = word_stats(count_words(text))
+            stats.loc[title_num ] = language , author.capilatize(), title.replace(".txt", " ") , sum(counts) , num_unique
+            title_num += 1
+            
+print(stats) #print the created dataframe
+print(stats.head()) #print the top 5 lines
+print(stats.tail()) #print the last 5 lines
+
+#------------------------------------------------------------------------------
 
 
 
