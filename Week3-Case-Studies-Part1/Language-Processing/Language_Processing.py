@@ -142,7 +142,7 @@ for language in os.listdir(movie_dir):
             print(inputfile)
             text = read_book(inputfile)
             (num_unique, counts) = word_stats(count_words(text))
-            stats.loc[title_num ] = language , director.capitalize(), title.replace(".txt", " ") , sum(counts) , num_unique
+            stats.loc[title_num ] = language , director.title(), title.replace(".txt", " ") , sum(counts) , num_unique #.title() here capitalises the first letter from the first and last name of the director. If we want to capitalise only the first letter, we can use .capitalize().
             title_num += 1
             
 print(stats) #print the created dataframe
