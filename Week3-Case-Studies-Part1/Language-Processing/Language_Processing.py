@@ -130,7 +130,7 @@ table.loc[2] = "Jess", 32
 print(table)
 '''
 
-stats = pd.DataFrame(columns = ("language" , "director" , "title" , "lenght" , "unique")) #this creates an empty dataframe 
+stats = pd.DataFrame(columns = ("language" , "director" , "title" , "length" , "unique")) #this creates an empty dataframe 
 #with empty table elements with 5 columns
 
 #To put data in the table
@@ -159,6 +159,7 @@ print(stats[stats.language == "English"]) #print the number of entries for langu
 import matplotlib.pyplot as plt
 
 plt.plot(stats.length, stats.unique, "bo")
+#OR we can write plt.plot(stats['length'], stats['unique'])
 plt.loglog(stats.length, stats.unique, "bo") #it is a straight line which suggest data modelling strategies that we might use
 
 plt.figure(figsize = (10,10))
