@@ -168,7 +168,7 @@ subset = stats[stats.Language == "English"] #extract a subset that has only the 
 plt.loglog(subset.Length, subset.Unique, "o", label = "English", color = "blue")
 
 subset = stats[stats.Language == "French"] #extract a subset that has only the rows with French Language
-plt.loglog(subset.Length, subset.Unique, "o", label = "English", color = "red")
+plt.loglog(subset.Length, subset.Unique, "o", label = "French", color = "red")
 
 
 plt.legend()
