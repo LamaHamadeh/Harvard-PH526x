@@ -79,9 +79,9 @@ print(len(text))#number of charatcers in the book
 
 #if there is a famous/wanted line in the book we can use the 'find' method to find it
 ind = text.find("go to the mattresses")
-print(ind)#print the index number of the famous/wanted sentence
-sample_text = text[ind : ind + 953]#slice the paragraph that contains the famous line
-print(sample_text)#print the whole chosen paragraph
+print(ind) #print the index number of the famous/wanted sentence
+sample_text = text[ind : ind + 953] #slice the paragraph that contains the famous line
+print(sample_text) #print the whole chosen paragraph
  
 
 #------------------------------------------------------------------------------
@@ -103,7 +103,7 @@ word_counts = count_words(text)
 (num_unique, counts) = word_stats(word_counts)
 
 print(num_unique) #print the number of unique number of words in the text
-print(sum(counts)) #print the total number of words in the text
+print(sum(counts)) #print the sum of the frequency of each word in the text
 
 
 #------------------------------------------------------------------------------
