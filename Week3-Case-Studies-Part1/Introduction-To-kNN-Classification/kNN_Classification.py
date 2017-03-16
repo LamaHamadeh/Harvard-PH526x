@@ -48,10 +48,10 @@ def majority_vote(votes):
         
     return random.choice(winners) #in case of a tie situation, Python picks a random candidate (element) and returns it.
 
-votes = [1, 2, 3, 1, 2 ,3 ,3 ,3 ,3, 2, 2, 2]
+votes = [1, 2, 3, 1, 2 ,3 ,3 ,3 ,3, 2, 2, 2] #here number 2 and 3 has the same appearing frequency: 5 (tie situation)
 winner = majority_vote(votes)
-print winner #it can be seen after runnign the code several times that thsi methods picks one of the candidates
-#and return it randomly.
+print winner #it can be seen after running the code several times that this method picks one of the candidates
+#and returns it randomly.
 
 #another method
 #--------------
@@ -64,7 +64,7 @@ def majority_vote_short(votes):
 
 votes = [1, 2, 3, 1, 2 ,3 ,3 ,3 ,3]
 winner_short = majority_vote_short(votes)
-print winner_short # it can be seen after runnign the code several times that this method always 
+print winner_short # it can be seen after running the code several times that this method always 
 #returns number 3 as the most common candidate and forgets about the other one: 2
 
 #------------------------------------------------------------------------------
