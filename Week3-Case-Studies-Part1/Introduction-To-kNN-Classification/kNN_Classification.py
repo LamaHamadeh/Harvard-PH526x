@@ -99,8 +99,8 @@ def find_nearest_neighbor(p, points, k=5):
     distances = np.zeros(points.shape[0])#'.shape[0]' here reutrn a tuple of array dimensions.
     for i in range(len(distances)):# loop over all points
         distances[i] = distance(p,points[i]) # compute the distance between point p and every other point using the function 'distnace'
-    ind = np.argsort(distances)#'argsort' is a function to sort the distnaces from short to long.
-    #np.argsort(distances) It sorts an array according to a single argument and returns the sorted indices
+    ind = np.argsort(distances)#'argsort' is a function that sorts the distnaces indinces from short to long.
+    #np.argsort(distances) it sorts an array according to a single argument and returns the sorted indices
     return ind[0:k] # or for short ind[:k]. This step is to return those k points that are nearest to point p
 
 
