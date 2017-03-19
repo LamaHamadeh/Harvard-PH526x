@@ -130,17 +130,20 @@ print(knn_predict(np.array([1.0, 2.7]), points, outcomes, k=2)) #class 0
 
 def generate_synthetic_data(n=50):
     """Create two sets of points from bivariate normal distributions."""
-    points = np.concatenate((ss.norm(0,1).rvs((n,2)),ss.norm(1,1).rvs((n,2))), axis=0)
+    points = np.concatenate((ss.norm(0,1).rvs((n,2)),ss.norm(1,1).rvs((n,2))), axis=0) #norm(mean, standard deviation)
+    #'.rvs' Random variates of given type. Here we have: .rvs((number of rows, number of columns))
+    # 'axis = 0' means that we are concatenating along the rows of these arrays
     outcomes = np.concatenate((np.repeat(0,n), np.repeat(1,n)))
+    #0 and 1 here refer to the names of classes
     return (points, outcomes)
 
-(points, outcomes) = generate_synthetic_data(n=20) 
+(points, outcomes) = generate_synthetic_data(n) #this gives 20 points from class 0 and the other 20 from class 1
 
 n=20
 
 plt.figure()
-plt.plot(points[:n,0], points[:n,1], "ro")
-plt.plot(points[n:,0], points[n:,1], "bo")
+plt.plot(points[:n,0], points[:n,1], "ro") #this refers to the first class 0 (n points)
+plt.plot(points[n:,0], points[n:,1], "bo") #this refers to the second class 1 (n points)
 
 
 #------------------------------------------------------------------------------
