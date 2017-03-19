@@ -128,6 +128,26 @@ print(knn_predict(np.array([1.0, 2.7]), points, outcomes, k=2)) #class 0
 #Generating Synthetic Data
 #-------------------------
 
+def generate_synthetic_data(n=50):
+    """Create two sets of points from bivariate normal distributions."""
+    points = np.concatenate((ss.norm(0,1).rvs((n,2)),ss.norm(1,1).rvs((n,2))), axis=0)
+    outcomes = np.concatenate((np.repeat(0,n), np.repeat(1,n)))
+    return (points, outcomes)
+
+(points, outcomes) = generate_synthetic_data(n=20) 
+
+n=20
+
+plt.figure()
+plt.plot(points[:n,0], points[:n,1], "ro")
+plt.plot(points[n:,0], points[n:,1], "bo")
+
+
+#------------------------------------------------------------------------------
+
+#Making a Prediction Grid
+#-------------------------
+
 
 
 
