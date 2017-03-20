@@ -151,7 +151,21 @@ plt.plot(points[n:,0], points[n:,1], "bo") #this refers to the second class 1 (n
 #Making a Prediction Grid
 #-------------------------
 
-
-
+def make_prediction_grid(predictors, outcomes, limits, h, k):
+    """classify each point on the prediction grid."""
+    (x_min, x_max, y_min, y_max) = limits
+    xs = np.arange(x_min, x_max, h)
+    ys = np.arange(y_min, y_max, h)
+    xx, yy = np.meshgrid(xs, ys)
+    
+    prediction_grid = np.zeros(xx.shape, dtype = int) # the type here is 'int' becasue both classes are integers: either 0 or 1
+    for i,x in enumerate(xs):
+        for j,y in enumerate(ys):
+            p = np.array([x,y])
+            prediction_grid[j,i] = knn_predict(p, predictors, outcomes, k)
+            #It can be noticed here that we have put [j,i] not the other way around. The reason for that is
+            #
+    return (xx, yy, prediction_grid)
 
 #------------------------------------------------------------------------------
+
