@@ -169,3 +169,53 @@ def make_prediction_grid(predictors, outcomes, limits, h, k):
 
 #------------------------------------------------------------------------------
 
+#Plotting the Prediction Grid
+#-----------------------------
+
+def plot_prediction_grid (xx, yy, prediction_grid, filename):
+    """ Plot KNN predictions for every point on the grid."""
+    from matplotlib.colors import ListedColormap
+    background_colormap = ListedColormap (["hotpink","lightskyblue", "yellowgreen"])
+    observation_colormap = ListedColormap (["red","blue","green"])
+    plt.figure(figsize =(10,10))
+    plt.pcolormesh(xx, yy, prediction_grid, cmap = background_colormap, alpha = 0.5)
+    plt.scatter(predictors[:,0], predictors [:,1], c = outcomes, cmap = observation_colormap, s = 50)
+    plt.xlabel('Variable 1'); plt.ylabel('Variable 2')
+    plt.xticks(()); plt.yticks(())
+    plt.xlim (np.min(xx), np.max(xx))
+    plt.ylim (np.min(yy), np.max(yy))
+    plt.savefig(filename)
+    
+    
+(predictors, outcomes) = generate_synthetic_data()
+
+
+k = 5; filename = "knn_synth_5.pdf"; limits = (-3, 4, -3 ,4); h = 0.1
+(xx, yy, prediction_grid) = make_prediction_grid(predictors, outcomes, limits, h ,k)
+plot_prediction_grid(xx, yy, prediction_grid, filename)
+
+
+k = 50; filename = "knn_synth_50.pdf"; limits = (-3, 4, -3 ,4); h = 0.1
+(xx, yy, prediction_grid) = make_prediction_grid(predictors, outcomes, limits, h ,k)
+plot_prediction_grid(xx, yy, prediction_grid, filename)
+
+#Looking at the plot for k equals 50, we can see that the decsionboundary is pretty smooth.
+#In contrast, if you look at the plot where k equals to 5, you'll see that the shape of the descison boundary is more complicated. 
+#It seems that you might be able to find a value of k that maximises the accuracy of the predictions.
+#But that's somewhat short sighted. 
+#this is because what you really care about is not how well your method performs on the training data set, 
+#the data set that we have seen so far.
+#but rather how well it performs on a future dataset you have not yet seen. 
+#It turns out that using a value for k that is too large or too small is not optimal. 
+# a phenomenon that is known as the bias-variance tradeoff. This suggests that some intermediate values of k
+#might be best. 
+
+#------------------------------------------------------------------------------
+
+#Applying the kNN Method
+#------------------------
+
+
+
+
+#------------------------------------------------------------------------------
