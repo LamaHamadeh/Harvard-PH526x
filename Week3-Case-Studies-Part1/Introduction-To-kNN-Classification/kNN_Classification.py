@@ -137,9 +137,9 @@ def generate_synthetic_data(n=50):
     #0 and 1 here refer to the names of classes
     return (points, outcomes)
 
-(points, outcomes) = generate_synthetic_data(n) #this gives 20 points from class 0 and the other 20 from class 1
-
 n=20
+
+(points, outcomes) = generate_synthetic_data(n) #this gives 20 points from class 0 and the other 20 from class 1
 
 plt.figure()
 plt.plot(points[:n,0], points[:n,1], "ro") #this refers to the first class 0 (n points)
