@@ -215,7 +215,45 @@ plot_prediction_grid(xx, yy, prediction_grid, filename)
 #Applying the kNN Method
 #------------------------
 
+from sklearn import datasets
+iris = datasets.load_iris()
+
+print iris.data
+
+predictors = iris.data[:, 0:2]
+outcomes = iris.target
+
+plt.plot(predictors[outcomes==0][:,0],predictors[outcomes==0][:,1],'ro') #the first species/ feature that is contained in the iris dataset
+plt.plot(predictors[outcomes==1][:,0],predictors[outcomes==1][:,1],'go') #the second species/ feature that is contained in the iris dataset
+plt.plot(predictors[outcomes==2][:,0],predictors[outcomes==2][:,1],'bo') #the third species/ feature that is contained in the iris dataset
+
+#prediction plot
+k = 5; filename = "iris_grid.pdf"; limits = (4,8,1.5,4.5); h = 0.1
+(xx, yy, prediction_grid) = make_prediction_grid(predictors, outcomes, limits, h ,k)
+plot_prediction_grid(xx, yy, prediction_grid, filename)
+
+from sklearn.neighbors import KNeighborsClassifier
+knn = KNeighborsClassifier(n_neighbors = 5)
+knn.fit(predictors, outcomes)
+sk_predictions = knn.predict(predictors)
 
 
+print sk_predictions.shape #(150,)
+
+
+my_predictions = np.array([knn_predict(p,predictors, outcomes,5) for p in predictors])
+
+print my_predictions.shape # (150,)
+
+
+sk_predictions == my_predictions
+
+print np.mean(sk_predictions == my_predictions) 
+print 100*np.mean(sk_predictions == my_predictions) #precentage
+
+print 100*np.mean(sk_predictions == outcomes) #83.333
+print 100*np.mean(my_predictions == outcomes) #84.666
+
+# It can be seen clearly that our homeade predictors is slightly better than the sklearn predictior: it is accurate approximately 85% of the time.
 
 #------------------------------------------------------------------------------
