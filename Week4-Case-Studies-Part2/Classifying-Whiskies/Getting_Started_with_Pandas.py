@@ -46,6 +46,10 @@ print x['name']
 #another way to show data in specific column is to use data attribute notation
 print x.name 
 
+
+#Indexing
+#--------
+
 #we often need to reindex a series of a DataFrame object
 #this doesn't affect the association between the index and the corresponding 
 #data, but instead it essentially reorders the data in the object.
@@ -62,6 +66,9 @@ print sorted(x.index)
 #or
 print x.reindex(sorted(x.index))
 
+
+#arithmetic operations
+#----------------------
 
 #Series and Data Frame objects support arithmetic operations like addition.
 #If we, for example, add two Series objects together,
