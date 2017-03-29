@@ -113,7 +113,7 @@ whisky['Region'] = pd.read_csv('regions.txt') #add 'regions.txt' as an extra col
 print whisky.head(4) #check the first 4 samples
 print whisky.tail(4) #check the last 4 samples
 
-# we use iloc to index a dataframe by locaton
+# we use iloc to index a dataframe by location
 print whisky.iloc[0:10] #for rows
 print whisky.iloc[5:10, 0:5] # for rows and columns
 
