@@ -104,23 +104,24 @@ print x+y
 
 #Loading and inspecting data
 #----------------------------
-
+#pandas is already imported
 import numpy as np
 
-whisky = pd.read_csv('whiskies.txt')
-whisky['Region'] = pd.read_csv('regions.txt')
+whisky = pd.read_csv('whiskies.txt') # read the dataframe
+whisky['Region'] = pd.read_csv('regions.txt') #add 'regions.txt' as an extra column to the 'whiskies.txt' dataframe
 
-print whisky.head(4)
-print whisky.tail(4)
+print whisky.head(4) #check the first 4 samples
+print whisky.tail(4) #check the last 4 samples
 
-print whisky.iloc[0:10]
+# we use iloc to index a dataframe by locaton
+print whisky.iloc[0:10] #for rows
+print whisky.iloc[5:10, 0:5] # for rows and columns
 
-print whisky.iloc[5:10, 0:5]
-
+#diaplay the names of the dataframe columns
 print whisky.columns
 
+#creating a subset 'flavors' from the original dataframe 'whisky'
 flavors = whisky.iloc[:, 2:14]
-
 print flavors
 
 #------------------------------------------------------------------------------
