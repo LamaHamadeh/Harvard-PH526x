@@ -138,7 +138,7 @@ import matplotlib.pyplot as plt
 
 #plot the correlation betweeb flavors
 plt.figure(figsize = (10,10))
-plt.pcolor(corr_flavors) #plot the correlation matrix
+plt.pcolor(corr_flavors) #plot the correlation matrix usinf pseudocolor (pcolor) plot function
 plt.colorbar()
 
 #plot the correlation betweeb whiskies among flavors
