@@ -1,14 +1,12 @@
 # -*- coding: utf-8 -*-
 """
 Created on Tue Mar 28 14:06:40 2017
-
 @author: ADB3HAMADL
 """
 
 # -*- coding: utf-8 -*-
 """
 Created on Tue Mar 28 10:17:25 2017
-
 @author: ADB3HAMADL
 """
 
@@ -107,8 +105,8 @@ print (x+y)
 #pandas is already imported
 import numpy as np
 
-whisky = pd.read_csv('/Users/lamahamadeh/Downloads/whiskies.txt') # read the dataframe
-whisky['Region'] = pd.read_csv('/Users/lamahamadeh/Downloads/regions.txt') #add 'regions.txt' as an extra column to the 'whiskies.txt' dataframe
+whisky = pd.read_csv('whiskies.txt') # read the dataframe
+whisky['Region'] = pd.read_csv('regions.txt') #add 'regions.txt' as an extra column to the 'whiskies.txt' dataframe
 
 print (whisky.head(4)) #check the first 4 samples
 print (whisky.tail(4)) #check the last 4 samples
@@ -186,8 +184,38 @@ print (np.sum(model.rows_,axis = 0))
 #Comparing Correlation Matrices
 #------------------------------
 
+whisky['Group'] = pd.Series(model.row_labels_, index = whisky.index)
 
+whisky = whisky.ix[np.argsort(model.row_labels_)]
 
+whisky =whisky.reset_index(drop = True)
+
+correlations = pd.DataFrame.corr(whisky.iloc[:,2:14].transpose())
+
+correlations = np.array(correlations)
+
+#plot the correlation coefficients
+plt.figure(figsize = (14,7))
+#plot the orginal correlaton coefficients
+plt.subplot(121)
+plt.pcolor(corr_whisky)
+plt.title('Original')
+plt.axis('tight')
+#plot the rearranged correlation coefficients
+plt.subplot(122)
+plt.pcolor(correlations)
+plt.title('Rearranged')
+plt.axis('tight')
+
+#As a result, we have two plots: the first one is the original correlation matrix
+#where we have 86 whiskies and the correlation coefficients are computed over thier 
+#flavor profiles.
+
+#the other plot, we have the exact same correlation matrix, except its rows and
+#columns have been reorded. #If you follow the diagonal line in this plot form
+#the bottom-left corner to the top-right corner, you will be able to see 
+#visually six blocks which indicte the six clusters of whiskies that spectral co-clustering
+#was intended to cluster. 
 
 
 #------------------------------------------------------------------------------
