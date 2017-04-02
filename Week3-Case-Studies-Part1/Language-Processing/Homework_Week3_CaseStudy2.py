@@ -7,9 +7,9 @@ Created on Mon Mar 06 13:34:51 2017
 
 
 '''
-==============================
-Case Study 2 - 
-==============================
+====================================================
+Case Study 2 - Word Frequency Distribution in Hamlet
+====================================================
 '''
 
 #In this case study, we will find and plot the distribution of word frequencies for each translation of Hamlet. 
