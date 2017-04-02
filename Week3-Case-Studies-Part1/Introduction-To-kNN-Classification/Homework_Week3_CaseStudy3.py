@@ -6,9 +6,9 @@ Created on Thu Mar 23 14:43:36 2017
 """
 
 '''
-==============================
-Case Study 3 - 
-==============================
+===================================
+Case Study 3 - Wine Classification
+===================================
 '''
 
 #In this case study, we will analyze a dataset consisting of an assortment of 
