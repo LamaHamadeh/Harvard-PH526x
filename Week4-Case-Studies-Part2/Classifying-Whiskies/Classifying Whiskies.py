@@ -4,12 +4,6 @@ Created on Tue Mar 28 14:06:40 2017
 @author: ADB3HAMADL
 """
 
-# -*- coding: utf-8 -*-
-"""
-Created on Tue Mar 28 10:17:25 2017
-@author: ADB3HAMADL
-"""
-
 #In this case study we will classify scotch whiskies based on their flavor 
 #characterisctics.
 #------------------------------------------------------------------------------
