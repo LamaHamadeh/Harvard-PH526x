@@ -24,8 +24,8 @@ import pandas as pd
 
 #Two main objects in Pandas to work with: Series and DataFrame.
 
-#Series
-#-------
+#Series 1D array
+#---------------
 
 x = pd.Series([6,3,8,6], index = ['q', 'w', 'e', 'r']) #in case we didn't 
 #specify the index, pandas will specify indicies numbers from 0 to len(x)
@@ -36,12 +36,14 @@ print (x[['w','r']]) #if we want to look at the values that correspond to certai
 #there are many ways to construct a Series object in Pandas. 
 #Creatign a dictionary is one of them
 age = {'Tim':29, 'Jim':31, 'Pam':27, 'Sam':35}
-x = pd.Series(age)
+x = pd.Series(age) 
 print (x)
+#It can be seen that the indices of the series are the keys of the dictionary 
+#and the objects of the series are the values in the dictionary
 
 
-#DataFrame
-#---------
+#DataFrame 2D array
+#------------------
 
 #create a dictionary
 data = {'name': ['Tim', 'Jim', 'Pam', 'Sam'], 'age': [29, 31, 27, 35], 'ZIP':['02115', '02130', '67700', '00100']}
@@ -49,7 +51,7 @@ data = {'name': ['Tim', 'Jim', 'Pam', 'Sam'], 'age': [29, 31, 27, 35], 'ZIP':['0
 x = pd.DataFrame(data, columns = ['name', 'age', 'ZIP'])
 #show DataFrame
 print (x)
-#show data in specific column
+#show data in a specific column
 print (x['name'])
 #another way to show data in specific column is to use data attribute notation
 print (x.name)
@@ -70,8 +72,13 @@ print (x.index)
 
 #we can take the index, and we can construct a new Python list, which consists 
 #of the same elements, the same letters, but now they have been ordered alphabetically.
+#STEP1
+#-----
 print (sorted(x.index))
-#or
+#STEP2
+#-----
+#Now, we can use this reindexed list, i.e., sorted(x.index)
+# to reored the elements of our object, i.e., x
 print (x.reindex(sorted(x.index)))
 
 
@@ -98,6 +105,7 @@ print (x+y)
 #the addition between two different indices. In order to have meaningful 
 #resulting values, the indicies must be the same!
 
+#The same goes for dataframes.
 #------------------------------------------------------------------------------
 
 #Loading and inspecting data
@@ -131,7 +139,7 @@ print (flavors)
 corr_flavors = pd.DataFrame.corr(flavors)
 print(corr_flavors) #print hte correlation matrix
 
-#plot the correlation matrix
+#visualise the correlation matrix
 import matplotlib.pyplot as plt
 
 #plot the correlation betweeb flavors
@@ -158,27 +166,41 @@ plt.colorbar()
 #Since that whiskeys in the dataset come from six different regions,
 #we're going to ask the clustering algorithm to find six blocks.
 
+#P.S: the word "Spectral" in "spectral co-clustering" comes from finding the 
+#eigenvalues and the eigenvectors of a matrix
 
-#import the clustering method
+
+#STEP1: import the clustering method
 from sklearn.cluster.bicluster import SpectralCoclustering
 
-#call the clustering method
-model = SpectralCoclustering(n_clusters = 6, random_state = 0)
+#STEP2: call the clustering method
+model = SpectralCoclustering(n_clusters = 6, random_state = 0)#we define 6 clusters
+#here as the whiskies come mainly from 6 main regions.
 
-#fit the model
+#STEP3: fit the model
 model.fit(corr_whisky)
 
 #Let's now look at the clusters that we have just uncovered
 print(model.rows_) 
 
+#each row of this matrix refers to a specific cluster, i.e., it ranges from 0 to 5
+#however, each coloumn refers to to the observation that relates to each clutsters, i.e., it ranges from 0 to 85
+
+
 #If we sum all of the columns of this array,
 #we can find out how many observations belong to each cluster.
-print (np.sum(model.rows_,axis = 1))
+print (np.sum(model.rows_,axis = 1))# this tells us how many whiskies belong to each cluster
 
 #If we sum all of the rows of this array,
 #we can find out how many clusters belong to each observation.
 print (np.sum(model.rows_,axis = 0))
 
+# it can be seen that the output matrix consists of elements that are all ones.
+#this is becasue each observatiion belongs to one of each clusters the answer
+#should be one for all of them.
+
+#if we want to see each observation to waht cluster it belongs we can write
+print(model.row_labels_)
 #------------------------------------------------------------------------------
 
 #Comparing Correlation Matrices
