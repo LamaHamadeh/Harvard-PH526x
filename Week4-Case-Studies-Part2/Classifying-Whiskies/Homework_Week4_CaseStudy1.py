@@ -197,70 +197,71 @@ show(fig)
 #plot of each distillery by latitude and longitude. As the cursor hovers over 
 #each point, it displays the distillery name, latitude, and longitude.
 
+def location_plot(title, colors):
+    output_file(title+".html")
+    location_source = ColumnDataSource(
+        data={
+            "x": whisky[" Latitude"],
+            "y": whisky[" Longitude"],
+            "colors": colors,
+            "regions": whisky.Region,
+            "distilleries": whisky.Distillery
+        }
+    )
+
+    fig = figure(title = title,
+        x_axis_location = "above", tools="resize, hover, save")
+    fig.plot_width  = 400
+    fig.plot_height = 500
+    fig.circle("x", "y", 10, 10, size=9, source=location_source,
+         color='colors', line_color = None)
+    fig.xaxis.major_label_orientation = np.pi / 3
+    hover = fig.select(dict(type = HoverTool))
+    hover.tooltips = {
+        "Distillery": "@distilleries",
+        "Location": "(@x, @y)"
+    }
+    show(fig)
+    
 #whisky.Region is a pandas column containing the regional group membership for 
 #each distillery. Make a list consisting of the value of region_colors for 
 #each distillery, and store this list as region_cols.
 
-#Use location_plot to plot each distillery, colored by its regional grouping.
+region_cols = [region_colors[i] for i in list(whisky["Region"])]
 
-output_file(title+".html")
-location_source = ColumnDataSource(
-    data={
-        "x": whisky[" Latitude"],
-        "y": whisky[" Longitude"],
-        "colors": colors,
-        "regions": whisky.Region,
-        "distilleries": whisky.Distillery
-    }
-)
+#Use location_plot to plot each distillery, colored by its regional grouping. 
 
-fig = figure(title = title,
-    x_axis_location = "above", tools="resize, hover, save")
-fig.plot_width  = 400
-fig.plot_height = 500
-fig.circle("x", "y", 10, 10, size=9, source=location_source,
-     color='colors', line_color = None)
-fig.xaxis.major_label_orientation = np.pi / 3
-hover = fig.select(dict(type = HoverTool))
-hover.tooltips = {
-    "Distillery": "@distilleries",
-    "Location": "(@x, @y)"
-}
-show(fig)
-
-region_cols = ## ENTER CODE HERE! ##
-location_plot("Whisky Locations and Regions", region_cols)
-
-
+location_plot("Whisky Locations and Regions", region_cols)  
 
 #------------------------------------------------------------------------------
 
 # Exercise 7
 #-----------
 
+#Use list comprehensions to create the list region_cols consisting of the color
+# in region_colors that corresponds to each whisky in whisky.Region.
+
+region_cols = [region_colors[i] for i in whisky['Region']]
+
+#Similarly, create a list classification_cols consisting of the color in 
+#cluster_colors that corresponds to each cluster membership in whisky.Group.
+
+classification_cols = [cluster_colors[j] for j in whisky['Group']]
+
+#location_plot remains stored from the previous exercise. Use it to create two 
+#interactive plots of distilleries, one colored by defined region called 
+#region_cols and the other with colors defined by coclustering designation 
+#called classification_cols. How well do the coclustering groupings match the 
+#regional groupings?
+
+location_plot("Whisky Locations and Regions", region_cols)
+location_plot("Whisky Locations and Groups", classification_cols)
 
 
-
-
-
-
-#------------------------------------------------------------------------------
-
-# Exercise 8
-#-----------
-
-
-
-
-
-#------------------------------------------------------------------------------
-
-# Exercise 9
-#-----------
-
-
-
-
-
+'''
+We see that there is not very much overlap between the regional classifications 
+and the coclustering classifications. This means that regional classifications 
+are not a very good guide to Scotch whisky flavor profiles.
+'''
 #------------------------------------------------------------------------------
 
