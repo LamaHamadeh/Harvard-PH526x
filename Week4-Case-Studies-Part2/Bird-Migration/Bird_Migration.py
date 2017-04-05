@@ -57,6 +57,20 @@ for bird_name in bird_names:
 #Examining Flight Speed
 #-----------------------
 
+#examining the flight speed for 'Eric'
+ix = birddata.bird_name == 'Eric'
+speed = birddata.speed_2d[ix]
+
+#identify NANs
+#--------------
+def num_missing(x):
+  return sum(x.isnull())
+
+#Applying per column:
+print ("Missing values per column:")
+print (birddata.apply(num_missing, axis=0)) #axis=0 defines that function is to be applied on each column
+
+# it can be seen that both 'direction' and 'speed_2d' have 443 nans each.
 
 
 
