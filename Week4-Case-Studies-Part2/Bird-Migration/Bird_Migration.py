@@ -60,15 +60,31 @@ for bird_name in bird_names:
 #examining the flight speed for 'Eric'
 ix = birddata.bird_name == 'Eric'
 speed = birddata.speed_2d[ix]
-
+ind = np.isnan(speed) 
 #if we want to know hpw many nans are there for Eric in particular
-np.sum(np.isnan(speed)) #85
+#np.sum(np.isnan(speed)) #85
+plt.hist(speed[~ind])
+#we have taken the bitwise complement of the 'ind' array which turns each occurence
+#of true to a false and vice versa.
+
+
+plt.figure(figsize = (8,4))
+speed = birddata.speed_2d[birddata.bird_name == 'Eric']
 ind = np.isnan(speed)
+plt.hist(speed[~ind], bins = np.linspace(0, 30, 20), normed = True)
+plt.xlabel('2D speed (m/s)')
+plt.ylabel('Frequency');
 
 
+#ploting histograms using pandas instead of plt
+#in this case, the plotting functions are methods of dataframe instances
 
+birddata.speed_2d.plot(kind = 'hist', range = [0,30])
+plt.xlabel('2D speed')
 
-
+#The benefit of using pandas in this case was that we did not
+#have to deal with NaNs explicitly.
+#Instead, all of that happens under the hood.
 
 
 '''
@@ -77,16 +93,11 @@ ind = np.isnan(speed)
 #--------------
 def num_missing(x):
   return sum(x.isnull())
-
 #Applying per column:
 print ("Missing values per column:")
 print (birddata.apply(num_missing, axis=0)) #axis=0 defines that function is to be applied on each column
-
 # it can be seen that both 'direction' and 'speed_2d' have 443 nans each.
 '''
-
-
-
 #------------------------------------------------------------------------------
 
 #Using Datetime
