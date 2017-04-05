@@ -32,7 +32,7 @@ x , y = birddata.longitude[ix] , birddata.latitude[ix]
 plt.figure(figsize=(7,7))
 plt.xlabel('longitude')
 plt.ylabel('latitude')
-plt.plot(x,y) #the plot shws the path that Eric has taken.
+plt.plot(x,y) #the plot shows the path that Eric has taken.
 
 
 ##plot latitude and longitude on a simple 2D plot for all the three birds
