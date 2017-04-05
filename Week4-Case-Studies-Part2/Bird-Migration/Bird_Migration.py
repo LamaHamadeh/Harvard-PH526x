@@ -27,7 +27,6 @@ import matplotlib.pyplot as plt
 import numpy as np
 
 #plot latitude and longitude on a simple 2D plot for one bird (e.g., Eric)
-
 ix = birddata.bird_name == 'Eric'
 x , y = birddata.longitude[ix] , birddata.latitude[ix]
 plt.figure(figsize=(7,7))
