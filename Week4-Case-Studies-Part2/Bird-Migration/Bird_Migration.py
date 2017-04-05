@@ -16,7 +16,7 @@ birddata = pd.read_csv('bird_tracking.csv')
 
 print(birddata.head(5))
 print(birddata.shape)#61920x8
-print(birddata.columns)
+print(birddata.columns) #print columns titles
 
 #------------------------------------------------------------------------------
 
