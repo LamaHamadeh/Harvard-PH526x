@@ -61,6 +61,18 @@ for bird_name in bird_names:
 ix = birddata.bird_name == 'Eric'
 speed = birddata.speed_2d[ix]
 
+#if we want to know hpw many nans are there for Eric in particular
+np.sum(np.isnan(speed)) #85
+ind = np.isnan(speed)
+
+
+
+
+
+
+
+'''
+#if we want to know how many nans are there for each features in the datatset
 #identify NANs
 #--------------
 def num_missing(x):
@@ -71,7 +83,7 @@ print ("Missing values per column:")
 print (birddata.apply(num_missing, axis=0)) #axis=0 defines that function is to be applied on each column
 
 # it can be seen that both 'direction' and 'speed_2d' have 443 nans each.
-
+'''
 
 
 
