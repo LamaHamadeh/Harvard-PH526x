@@ -92,7 +92,64 @@ print (birddata.apply(num_missing, axis=0)) #axis=0 defines that function is to 
 #Using Datetime
 #--------------
 
+import datetime 
 
+datetime.datetime.today()
+
+time_1 = datetime.datetime.today()
+
+print (time_1)
+
+time_2 = datetime.datetime.today()
+
+print (time_2)
+
+print(time_2 - time_1) #this is the so-called timedelta
+
+#If we'd like to compute how much time has passed between any two
+#observations in our data set, we first have
+#to convert the timestamps, now given as strings, to datetime objects.
+
+date_str = birddata.date_time[0]
+
+print(date_str)
+print(date_str[:-3]) #this will slice the given time by removing the last three
+#characters.
+
+datetime.datetime.strptime(date_str[:-3], '%Y-%m-%d %H:%M:%S')
+#Here datetime.datetime.strptime Takes in a date and time string, as well as 
+#an expected format string, and returns a formatted datetime object.
+
+#We can now use this function to go over every single row in our data set,
+#and create a new datetime object corresponding to every single row.
+
+timestamps = []
+for k in range(len(birddata)):
+    timestamps.append(datetime.datetime.strptime\
+    (birddata.date_time.iloc[k][:-3],'%Y-%m-%d %H:%M:%S'))
+    
+    
+birddata['timestamp'] = pd.Series(timestamps, index = birddata.index) #this will
+#add the homemade created 'timestamps' list ot as an extra column to our 
+#dataframe 'birddata'. 
+
+#What I'd like to do next is to create a list that
+#captures the amount of time that has elapsed
+#since the beginning of data collection.
+
+#STEP1: First I will extract the timestamps for Eric,
+#and that object is going to be called times.
+times = birddata.timestamp[birddata.bird_name == 'Eric']
+
+#STEP2: then create my elapsed time object and I
+#construct that as a list comprehension.
+elapsed_time = [time - times[0] for time in times]
+
+print(elapsed_time[1000])
+
+plt.plot(np.array(elapsed_time) / datetime.timedelta(days = 1))
+plt.xlabel('Observation')
+plt.ylabel('Elapsed time (days)')
 
 
 #------------------------------------------------------------------------------
