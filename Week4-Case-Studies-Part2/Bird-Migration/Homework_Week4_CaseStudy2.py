@@ -94,7 +94,6 @@ mean_altitudes_perday.head()
 
 import matplotlib.pyplot as plt
 
-
 eric_daily_speed  = grouped_birdday.speed_2d.mean()["Eric"]
 sanne_daily_speed = grouped_birdday.speed_2d.mean()["Sanne"]
 nico_daily_speed  = grouped_birdday.speed_2d.mean()["Nico"]
