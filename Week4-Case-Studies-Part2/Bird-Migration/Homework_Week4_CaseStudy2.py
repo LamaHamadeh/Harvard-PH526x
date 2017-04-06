@@ -43,7 +43,6 @@ print grouped_birds.head()
 # Assign this to `mean_altitudes`.
 mean_altitudes = grouped_birds.altitude.mean()
 
-
 #------------------------------------------------------------------------------
 
 #Exercise 2
@@ -105,7 +104,5 @@ sanne_daily_speed.plot(label="Sanne")
 nico_daily_speed.plot(label="Nico")
 plt.legend(loc="upper left")
 plt.show()
-
-
 
 #------------------------------------------------------------------------------
