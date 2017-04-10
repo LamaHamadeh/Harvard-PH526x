@@ -2,7 +2,6 @@
 # -*- coding: utf-8 -*-
 """
 Created on Fri Apr 7 10:37:22 2017
-
 @author: lamahamadeh
 """
 
@@ -60,6 +59,7 @@ G = nx.karate_club_graph()
 
 import matplotlib.pyplot as plt
 
+plt.figure()
 nx.draw(G, with_labels = True, node_color = 'lightblue', edge_color = 'gray')
 
 #Networkx stores the degrees of nodes in a dictionary where
@@ -102,6 +102,7 @@ def er_graph(N, p):#N is the number of nodes
 
 print (G.number_of_nodes()) #20
 
+plt.figure()
 nx.draw(er_graph(10, 0.08), node_size = 40, node_color = 'gray')
 
 '''
@@ -113,26 +114,114 @@ however, if we have p =1 then ER graph will give us only one componnet.
 #Plotting the Degree Distribution
 #---------------------------------
 
+def plot_degree_distribution(G):
+    plt.hist(list(G.degree().values()), histtype= 'step')
+    plt.xlabel('Degree $k$')
+    plt.ylabel('$P(k)$')
+    plt.title('Degree Distribution')
 
+plt.figure()
+G1 = er_graph(500, 0.08)
+plot_degree_distribution(G1)
 
+G2 = er_graph(500, 0.08)
+plot_degree_distribution(G2)
 
+G3 = er_graph(500, 0.08)
+plot_degree_distribution(G3)
 
+# we can see that the three degree distributions follow one another
+#fairly closely.
 #------------------------------------------------------------------------------
 
 #Descriptive Statistics of Empirical Social Networks
 #---------------------------------------------------
 
+#The structure of connections in a network
+#can be captured in what is known as the Adjacency matrix of the network.
+#If we have n nodes, this is n by n matrix,
+#where entry ij is one if node i and node j have a tie between them.
+#Otherwise, that entry is equal to zero.
+#The graphs we're dealing with are called undirected,
+#which means that a tie between nodes i and j
+#can just as well be described as a tie between nodes j and i.
+#Consequently, the adjacency matrix is symmetric.
+#That means that the element ij is always the same as the element ji.
+#Either both are zero or both are equal to 1.
 
+#import numpy
+import numpy as np
 
+#import datasets
+A1 = np.loadtxt('C:/Users/Admin/Desktop/adj_allVillageRelationships_vilno_1.csv', delimiter = ',')
+A2 = np.loadtxt('C:/Users/Admin/Desktop/adj_allVillageRelationships_vilno_2.csv', delimiter = ',')
 
+#Our next step will be to convert the adjacency matrices to graph objects.
+G1 = nx.to_networkx_graph(A1)
+G2 = nx.to_networkx_graph(A2)
+
+def basic_net_stats(G):
+    print('Number of nodes: %d' % G.number_of_nodes())
+    print('Number of edges: %d' % G.number_of_edges())
+    print('Average Degree: %.2f' % np.mean(list(G.degree().values())))
+
+basic_net_stats(G1)
+basic_net_stats(G2)
+
+plt.figure()
+plot_degree_distribution(G1)
+plot_degree_distribution(G2)
+
+#Notice how the degree distributions look quite different from what
+#we observed for the ER networks.
+#It seems that most people have relatively few connections,
+#whereas a small fraction of people have a large number of connections.
+#This distribution doesn't look at all symmetric,
+#and its tail extends quite far to the right.
+#This suggests that the ER graphs are likely not good models
+#for real world social networks.
+#In practice, we can use ER graphs as a kind of reference graph
+#by comparing their properties to those of empirical social networks.
+#More sophisticated network models are able to capture
+#many of the properties that are shown by real world networks.
 
 #------------------------------------------------------------------------------
 
 #Finding the Largest Connected Component
 #---------------------------------------
 
+G1_LCC = max(nx.connected_component_subgraphs(G1), key=len)
+G2_LCC = max(nx.connected_component_subgraphs(G2), key=len)
 
+print(G1_LCC) #this would give us the same output as if we print 
+#G1_LCC.number_of_nodes()
 
+print G1_LCC.number_of_nodes() / G1.number_of_nodes()
+#in this case, we see that 97.9% of all of the nodes of graph G1
+#are contained in the largest connected component.
 
+print G2_LCC.number_of_nodes() / G2.number_of_nodes()
+#for G2 have approximately 92% of all nodes
+#are contained in the largest connected component.
+
+#Let's now try visualizing these components.
+#for G1
+plt.figure()
+nx.draw(G1_LCC, node_color = 'red', edge_color = 'gray', node_size = 20)
+
+#for G2
+plt.figure()
+nx.draw(G2_LCC, node_color = 'green', edge_color = 'gray', node_size = 20)
+
+#The visualization algorithm that we have used
+#is stochastic, meaning that if you run it several times,
+#you will always get a somewhat different graph layout.
+#However, in most visualizations, you should
+#find that the largest connected component of G2
+#appears to consist of two separate groups.
+#These groups are called network communities.
+#And the idea is that a community is a group
+#of nodes that are densely connected to other nodes in the group,
+#but only sparsely connected nodes outside of that group.
 
 #------------------------------------------------------------------------------
